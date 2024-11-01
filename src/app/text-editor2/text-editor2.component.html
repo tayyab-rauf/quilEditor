@@ -1,0 +1,16 @@
+<div class="editor-container">
+  <quill-editor #editor (onSelectionChanged)="onSelectionChange($event)" ></quill-editor>
+</div>
+
+<!-- Inline popover for toolbar -->
+<div *ngIf="showToolbar" class="toolbar-popover" [ngStyle]="toolbarPosition">
+  <button class="btn" (click)="formatText('bold')">B</button>
+  <button (click)="formatText('italic')">I</button>
+  <button (click)="formatText('header', '1')">Heading 1</button>
+  <button (click)="formatText('header', '2')">Heading 2</button>
+  <select (change)="applySuggestion($event)">
+    <option value="" disabled selected>Suggestions</option>
+    <option *ngFor="let suggestion of suggestions" [value]="suggestion">{{ suggestion }}</option>
+  </select>
+  <!-- Add more toolbar buttons as needed -->
+</div>

@@ -1,0 +1,23 @@
+.toolbar-popover {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.toolbar-popover button {
+  background: none;
+  border: 1px dotted #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.toolbar-popover button:hover {
+  color: #007bff;
+}

@@ -1,0 +1,12 @@
+<div class="editor-container">
+    <quill-editor (onSelectionChanged)="onSelectionChange($event)"></quill-editor>
+    <ng-template #suggestionPopover let-selectedText="selectedText">
+      <div class="suggestion-popover">
+        <p>Suggestions for: "{{ selectedText }}"</p>
+        <ul>
+          <li *ngFor="let suggestion of suggestions">{{ suggestion }}</li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+  
