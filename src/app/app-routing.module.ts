@@ -6,7 +6,7 @@ import { TextEditor2Component } from './text-editor2/text-editor2.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'editor1',
+    redirectTo: 'editor2',
     pathMatch: 'full',
   },
   { path: 'editor1', component: TextEditorComponent },
