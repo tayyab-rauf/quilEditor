@@ -1,4 +1,4 @@
-<div class="editor-container">
+<!-- <div class="editor-container">
     <quill-editor (onSelectionChanged)="onSelectionChange($event)"></quill-editor>
     <ng-template #suggestionPopover let-selectedText="selectedText">
       <div class="suggestion-popover">
@@ -8,5 +8,35 @@
         </ul>
       </div>
     </ng-template>
+  </div>
+   -->
+
+   <div class="editor-container">
+    <quill-editor #editor (onSelectionChanged)="onSelectionChange($event)"></quill-editor>
+  </div>
+  
+  <div *ngIf="showToolbar" class="toolbar-popover" [ngStyle]="toolbarPosition">
+    <button class="btn" (click)="formatText('bold')">B</button>
+    <button (click)="formatText('italic')">I</button>
+    <button (click)="formatText('header', '1')">Heading 1</button>
+    <button (click)="formatText('header', '2')">Heading 2</button>
+    <button (click)="toggleAISuggestions($event)">AI Suggestions</button>
+    <select (change)="applySuggestion($event)">
+      <option value="" disabled selected>Suggestions</option>
+      <option *ngFor="let suggestion of suggestions" [value]="suggestion">{{ suggestion }}</option>
+    </select>
+  </div>
+  
+  <div *ngIf="showAISuggestions" class="ai-suggestions-popover" [ngStyle]="aiPopoverPosition" (mousedown)="$event.preventDefault()">
+    <div class="ai-toolbar">
+      <button (click)="replaceWithAISuggestion($event)">Replace</button>
+      <button (click)="regenerateAISuggestions($event)">Regenerate</button>
+      <button (click)="hideAISuggestions($event)">Close</button>
+    </div>
+    <div class="suggestions-content">
+      <p *ngFor="let suggestion of aiSuggestions" (click)="selectAISuggestion(suggestion)" [class.selected]="suggestion === selectedAISuggestion">
+        {{ suggestion }}
+      </p>
+    </div>
   </div>
   
